@@ -1,12 +1,12 @@
 module Main where
 
 import BioData
+import Transform
 
-myRna :: RNASequence
-myRna = [A, U, G, C, U, A, G, C]
+myDNA :: DNASequence
+myDNA = [A,T,T,A,A,A,G,G,T, T]
 
 main :: IO()
-
 main = 
     do
-       putStrLn $ show myRna 
+       putStrLn $ show $ translate $ transcribe myDNA 
