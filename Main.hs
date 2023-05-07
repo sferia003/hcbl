@@ -4,9 +4,10 @@ import BioData
 import Transform
 
 myDNA :: DNASequence
-myDNA = [A,T,T,A,A,A,G,G,T, T]
+myDNA = [A,T,C,G,A,A,A,A,A,A,A,A,A,A,A,A]
 
 main :: IO()
 main = 
     do
        putStrLn $ show $ translate $ transcribe myDNA 
+       putStrLn $ show $ entropy myDNA

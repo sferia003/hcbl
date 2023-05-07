@@ -1,6 +1,7 @@
 module Transform where
 
 import BioData
+import Utils
 import qualified Data.Map as Map
 
 transcribe :: DNASequence -> RNASequence
@@ -20,3 +21,10 @@ translate (x:y:z:xs) = Peptide (rnaToPeptideMappings Map.! arr) (translate xs)
                         where arr = [x,y,z]
 translate _ = Nil 
 
+entropy :: [Nucleotide] -> Double
+entropy [] = 0
+entropy x = abs $ entropyR $ findRelativeFrequency x
+
+entropyR :: [(Nucleotide, Double)] -> Double
+entropyR [] = 0
+entropyR ((_, y):xs) = (y * logBase 2 y)  + entropyR xs
