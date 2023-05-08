@@ -1,13 +1,22 @@
 module Main where
 
-import BioData
 import Transform
-
-myDNA :: DNASequence
-myDNA = [A,T,C,G,A,A,A,A,A,A,A,A,A,A,A,A]
+import Analyze
+import Utils
 
 main :: IO()
 main = 
     do
-       putStrLn $ show $ translate $ transcribe myDNA 
-       putStrLn $ show $ entropy myDNA
+       ts <- getNucleotidesFromFile "test.txt"
+       t2s <- getNucleotidesFromFile "test2.txt"
+       let entropyT = entropy ts
+       let entropyT2 = entropy t2s
+       let sim = similarity ts t2s
+       let rnaT = transcribe ts
+       let polyT = translate rnaT
+       print entropyT
+       print entropyT2
+       print ts
+       print rnaT
+       print polyT
+       print sim

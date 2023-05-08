@@ -1,5 +1,6 @@
 module BioData where
 import qualified Data.Map as Map
+import qualified Data.Char as Char
 
 data Nucleotide = A | C | G | T | U deriving (Show, Eq, Ord)
 
@@ -11,6 +12,19 @@ data PolypeptideChain = Peptide AminoAcid PolypeptideChain | Nil deriving (Show)
 
 type DNASequence = [Nucleotide] 
 type RNASequence = [Nucleotide] 
+type NucleotideSequence = [Nucleotide]
+
+stringToNucleotides :: String -> NucleotideSequence 
+stringToNucleotides "" = []
+stringToNucleotides (x:xs) = case y of
+                                'a' -> A : stringToNucleotides xs
+                                'c' -> C : stringToNucleotides xs
+                                'g' -> G : stringToNucleotides xs
+                                't' -> T : stringToNucleotides xs
+                                'u' -> U : stringToNucleotides xs
+                                _  -> error "Invalid Nucleotide"
+                             where y = Char.toLower x
+
 
 rnaToPeptideMappings :: Map.Map RNASequence AminoAcid 
 rnaToPeptideMappings = Map.fromList [

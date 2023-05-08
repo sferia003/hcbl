@@ -5,7 +5,7 @@ GHC = ghc
 GHC_FLAGS = -Wall
 
 # set the name of the executable to generate
-EXECUTABLE = my_program
+EXECUTABLE = test_program
 
 # set the source directory and extension
 SRC_TYPES = types
