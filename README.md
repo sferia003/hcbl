@@ -2,7 +2,7 @@
 
 A simple library that allows one to import sequences and transform/analyze them.
 
-## Development
+## Use
 
 Run `make` to generate an example executable. `Main.hs` serves an example to demonstrate
 use of the library.
